@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -43,17 +43,17 @@
   <ns1:operation name="getClientByNif" qname="ns3:getClientByNif" returnQName="ns3:getClientByNifReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns3:nif" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="addClientService" qname="ns4:addClientService" returnQName="ns4:addClientServiceReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns4:name" type="xsd:string"/>
-   <ns1:parameter qname="ns4:nif" type="xsd:string"/>
-   <ns1:parameter qname="ns4:address" type="xsd:string"/>
-   <ns1:parameter qname="ns4:phoneNumber" type="xsd:string"/>
+  <ns1:operation name="listAllClients" qname="ns4:listAllClients" returnQName="ns4:listAllClientsReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getClientByName" qname="ns5:getClientByName" returnQName="ns5:getClientByNameReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:name" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="listAllClients" qname="ns5:listAllClients" returnQName="ns5:listAllClientsReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-  <ns1:operation name="getClientByName" qname="ns6:getClientByName" returnQName="ns6:getClientByNameReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="addClient" qname="ns6:addClient" returnQName="ns6:addClientReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns6:name" type="xsd:string"/>
+   <ns1:parameter qname="ns6:nif" type="xsd:string"/>
+   <ns1:parameter qname="ns6:address" type="xsd:string"/>
+   <ns1:parameter qname="ns6:phoneNumber" type="xsd:string"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="removeClient init listAllClients getClientByName addClientService getClientByNif"/>
+  <ns1:parameter name="allowedMethods" value="removeClient init listAllClients getClientByName getClientByNif addClient"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="ClientManager"/>
   <ns1:parameter name="className" value="com.pedromdcr.multicert.exercise.ClientManager"/>

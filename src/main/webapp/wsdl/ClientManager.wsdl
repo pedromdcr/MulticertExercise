@@ -41,23 +41,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="addClientService">
-    <complexType>
-     <sequence>
-      <element name="name" type="xsd:string"/>
-      <element name="nif" type="xsd:string"/>
-      <element name="address" type="xsd:string"/>
-      <element name="phoneNumber" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="addClientServiceResponse">
-    <complexType>
-     <sequence>
-      <element name="addClientServiceReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
    <element name="listAllClients">
     <complexType/>
    </element>
@@ -82,6 +65,23 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="addClient">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+      <element name="nif" type="xsd:string"/>
+      <element name="address" type="xsd:string"/>
+      <element name="phoneNumber" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addClientResponse">
+    <complexType>
+     <sequence>
+      <element name="addClientReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
   </schema>
  </wsdl:types>
 
@@ -93,9 +93,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="addClientServiceRequest">
+   <wsdl:message name="addClientRequest">
 
-      <wsdl:part element="impl:addClientService" name="parameters">
+      <wsdl:part element="impl:addClient" name="parameters">
 
       </wsdl:part>
 
@@ -149,14 +149,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="addClientServiceResponse">
-
-      <wsdl:part element="impl:addClientServiceResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="initResponse">
 
       <wsdl:part element="impl:initResponse" name="parameters">
@@ -176,6 +168,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="getClientByNameResponse">
 
       <wsdl:part element="impl:getClientByNameResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addClientResponse">
+
+      <wsdl:part element="impl:addClientResponse" name="parameters">
 
       </wsdl:part>
 
@@ -219,18 +219,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="addClientService">
-
-         <wsdl:input message="impl:addClientServiceRequest" name="addClientServiceRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:addClientServiceResponse" name="addClientServiceResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="listAllClients">
 
          <wsdl:input message="impl:listAllClientsRequest" name="listAllClientsRequest">
@@ -250,6 +238,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:getClientByNameResponse" name="getClientByNameResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addClient">
+
+         <wsdl:input message="impl:addClientRequest" name="addClientRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addClientResponse" name="addClientResponse">
 
        </wsdl:output>
 
@@ -315,24 +315,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="addClientService">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="addClientServiceRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="addClientServiceResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="listAllClients">
 
          <wsdlsoap:operation soapAction=""/>
@@ -362,6 +344,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="getClientByNameResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addClient">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addClientRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addClientResponse">
 
             <wsdlsoap:body use="literal"/>
 

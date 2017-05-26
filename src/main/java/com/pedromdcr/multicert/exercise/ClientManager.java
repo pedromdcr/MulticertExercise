@@ -20,7 +20,7 @@ public class ClientManager {
 	public static final String CLIENT_ADDRESS = "address";
 	public static final String CLIENT_PHONENUMBER = "phonenumber";
 	
-	public void init() {
+	public String init() {
 		
 		try
 	    {
@@ -41,6 +41,8 @@ public class ClientManager {
 			System.err.println("Error accessing database. Exception message:");
 			System.err.println(e.getMessage()); 
 	    } 
+		
+		return "Connection to database established.";
 		
 	}
 
@@ -105,7 +107,7 @@ public class ClientManager {
 		            response += name + " | " + nif + " | " + address + " | " + phoneNumber + "\n";
 		        }
 		        
-		        //connection.close();
+		        stmt.close();
 		    }
 			catch (SQLException e) {
 		        System.err.println("Error querying database. Exception message:");
@@ -144,7 +146,6 @@ public class ClientManager {
 			    
 			    stmt.close();
 				
-				//connection.close();
 			}
 			catch (SQLException e) {
 				System.err.println("Error preparing statement or updating database. Exception message:");
