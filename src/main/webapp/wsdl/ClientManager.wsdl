@@ -4,90 +4,178 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://exercise.multicert.pedromdcr.com" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="main">
-    <complexType>
-     <sequence>
-      <element maxOccurs="unbounded" name="args" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="mainResponse">
+   <element name="init">
     <complexType/>
    </element>
-   <element name="addValue">
+   <element name="initResponse">
+    <complexType/>
+   </element>
+   <element name="removeClient">
     <complexType>
      <sequence>
-      <element name="value" type="xsd:float"/>
+      <element name="name" type="xsd:string"/>
+      <element name="nif" type="xsd:string"/>
+      <element name="address" type="xsd:string"/>
+      <element name="phoneNumber" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
-   <element name="addValueResponse">
+   <element name="removeClientResponse">
     <complexType>
      <sequence>
-      <element name="addValueReturn" type="xsd:float"/>
+      <element name="removeClientReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
-   <element name="subtractValue">
+   <element name="getClientByNif">
     <complexType>
      <sequence>
-      <element name="value" type="xsd:float"/>
+      <element name="nif" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
-   <element name="subtractValueResponse">
+   <element name="getClientByNifResponse">
     <complexType>
      <sequence>
-      <element name="subtractValueReturn" type="xsd:float"/>
+      <element name="getClientByNifReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addClientService">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+      <element name="nif" type="xsd:string"/>
+      <element name="address" type="xsd:string"/>
+      <element name="phoneNumber" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addClientServiceResponse">
+    <complexType>
+     <sequence>
+      <element name="addClientServiceReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listAllClients">
+    <complexType/>
+   </element>
+   <element name="listAllClientsResponse">
+    <complexType>
+     <sequence>
+      <element name="listAllClientsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getClientByName">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getClientByNameResponse">
+    <complexType>
+     <sequence>
+      <element name="getClientByNameReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
   </schema>
  </wsdl:types>
 
-   <wsdl:message name="subtractValueResponse">
+   <wsdl:message name="getClientByNifRequest">
 
-      <wsdl:part element="impl:subtractValueResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="mainResponse">
-
-      <wsdl:part element="impl:mainResponse" name="parameters">
+      <wsdl:part element="impl:getClientByNif" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="mainRequest">
+   <wsdl:message name="addClientServiceRequest">
 
-      <wsdl:part element="impl:main" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="addValueResponse">
-
-      <wsdl:part element="impl:addValueResponse" name="parameters">
+      <wsdl:part element="impl:addClientService" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="subtractValueRequest">
+   <wsdl:message name="listAllClientsRequest">
 
-      <wsdl:part element="impl:subtractValue" name="parameters">
+      <wsdl:part element="impl:listAllClients" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="addValueRequest">
+   <wsdl:message name="listAllClientsResponse">
 
-      <wsdl:part element="impl:addValue" name="parameters">
+      <wsdl:part element="impl:listAllClientsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="removeClientRequest">
+
+      <wsdl:part element="impl:removeClient" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getClientByNameRequest">
+
+      <wsdl:part element="impl:getClientByName" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="initRequest">
+
+      <wsdl:part element="impl:init" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="removeClientResponse">
+
+      <wsdl:part element="impl:removeClientResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addClientServiceResponse">
+
+      <wsdl:part element="impl:addClientServiceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="initResponse">
+
+      <wsdl:part element="impl:initResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getClientByNifResponse">
+
+      <wsdl:part element="impl:getClientByNifResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getClientByNameResponse">
+
+      <wsdl:part element="impl:getClientByNameResponse" name="parameters">
 
       </wsdl:part>
 
@@ -95,37 +183,73 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    <wsdl:portType name="ClientManager">
 
-      <wsdl:operation name="main">
+      <wsdl:operation name="init">
 
-         <wsdl:input message="impl:mainRequest" name="mainRequest">
+         <wsdl:input message="impl:initRequest" name="initRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:mainResponse" name="mainResponse">
+         <wsdl:output message="impl:initResponse" name="initResponse">
 
        </wsdl:output>
 
       </wsdl:operation>
 
-      <wsdl:operation name="addValue">
+      <wsdl:operation name="removeClient">
 
-         <wsdl:input message="impl:addValueRequest" name="addValueRequest">
+         <wsdl:input message="impl:removeClientRequest" name="removeClientRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:addValueResponse" name="addValueResponse">
+         <wsdl:output message="impl:removeClientResponse" name="removeClientResponse">
 
        </wsdl:output>
 
       </wsdl:operation>
 
-      <wsdl:operation name="subtractValue">
+      <wsdl:operation name="getClientByNif">
 
-         <wsdl:input message="impl:subtractValueRequest" name="subtractValueRequest">
+         <wsdl:input message="impl:getClientByNifRequest" name="getClientByNifRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:subtractValueResponse" name="subtractValueResponse">
+         <wsdl:output message="impl:getClientByNifResponse" name="getClientByNifResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addClientService">
+
+         <wsdl:input message="impl:addClientServiceRequest" name="addClientServiceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addClientServiceResponse" name="addClientServiceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listAllClients">
+
+         <wsdl:input message="impl:listAllClientsRequest" name="listAllClientsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:listAllClientsResponse" name="listAllClientsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getClientByName">
+
+         <wsdl:input message="impl:getClientByNameRequest" name="getClientByNameRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getClientByNameResponse" name="getClientByNameResponse">
 
        </wsdl:output>
 
@@ -137,17 +261,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-      <wsdl:operation name="main">
+      <wsdl:operation name="init">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="mainRequest">
+         <wsdl:input name="initRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="mainResponse">
+         <wsdl:output name="initResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -155,17 +279,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="addValue">
+      <wsdl:operation name="removeClient">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="addValueRequest">
+         <wsdl:input name="removeClientRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="addValueResponse">
+         <wsdl:output name="removeClientResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -173,17 +297,71 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="subtractValue">
+      <wsdl:operation name="getClientByNif">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="subtractValueRequest">
+         <wsdl:input name="getClientByNifRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="subtractValueResponse">
+         <wsdl:output name="getClientByNifResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addClientService">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addClientServiceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addClientServiceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listAllClients">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="listAllClientsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="listAllClientsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getClientByName">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getClientByNameRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getClientByNameResponse">
 
             <wsdlsoap:body use="literal"/>
 
