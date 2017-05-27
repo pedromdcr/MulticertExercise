@@ -11,13 +11,13 @@ These instructions will get you a copy of the project up and running on your loc
 This project requires JDK 7 which you can download [here][1].
 
 #### Tomcat 8
-Go into your Tomcat 8.x install directory and add the following code to the file `server.xml`:
+Go into your Tomcat 8.x install directory and add the following code to the file `server.xml` adjusting the path to the keystore (the SSL certificate) accordingly:
 
 ```xml
 <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
                maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
                clientAuth="false" sslProtocol="TLS" 
-               keystoreFile="/Users/Pedro/Documents/multicertKey"
+               keystoreFile="/Users/Pedro/workspace/MulticertWS/multicertKey"
 	       keystorePass="multicert" />
 ```
 
