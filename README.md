@@ -31,6 +31,15 @@ In the same directory, add the following code to `context.xml` nested inside the
 ```
 
 #### PostgreSQL 9.6.3
+This project uses PostgreSQL which you can download [here][2].
+
+There is a database dump file called `multicertdb.sql` in the project root folder. To reload it in your machine open a command prompt in this folder and type the following:
+
+```
+psql -d newdb -f multicertdb.sql
+```
+
+This reloads multicertdb into a freshly created database named `newdb`.
 
 
 ### Installing
@@ -83,3 +92,4 @@ Add additional notes about how to deploy this on a live system
 * [Tomcat](https://tomcat.apache.org/) - Used to deploy web services
 
 [1]: http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html
+[2]: https://www.postgresql.org/download/windows/
