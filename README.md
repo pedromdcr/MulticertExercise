@@ -11,7 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 This project requires JDK 7 which you can download [here][1].
 
 #### Tomcat 8
-Go into your Tomcat 8.x install directory and add the following code to the file `server.xml` adjusting the path to the keystore (the SSL certificate) accordingly:
+[Download][3] Tomcat. Go into your Tomcat 8.x install directory and add the following code to the file `server.xml` adjusting the path to the keystore (the SSL certificate) accordingly:
 
 ```xml
 <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
@@ -30,6 +30,16 @@ In the same directory, add the following code to `context.xml` nested inside the
           username="postgres" password="multicert" maxTotal="20" maxIdle="10" maxWaitMillis="-1"/>
 ```
 
+Finally add the following to `tomcat-users.xml`, in case you haven't set it already:
+
+```xml
+<role rolename="manager-gui"/>  
+<role rolename="manager-script"/>   
+<user username="admin" password="password" roles="manager-gui,manager-script" />  
+```
+
+Use any `username` and `password` you'd like, but use these when you change Maven settings below.
+
 #### PostgreSQL 9.6.3
 This project uses PostgreSQL which you can download [here][2].
 
@@ -41,48 +51,25 @@ psql -d newdb -f multicertdb.sql
 
 This reloads multicertdb into a freshly created database named `newdb`.
 
+#### Maven 3.3.9
+
+We use [Maven][4] for dependency management in this project. Make sure to add the following definition to the `settings.xml` file in your Maven install directory (nest it inside the `<settings>` tag):
+
+```xml
+<server>
+   <id>TomcatServer</id>
+   <username>admin</username>
+   <password>password</password>
+</server>
+```
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+Instructions sent via email. Further improvements will be made soon if possible.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Currently only supported via Eclipse with Tomcat.
 
 ## Built With
 
@@ -93,3 +80,5 @@ Add additional notes about how to deploy this on a live system
 
 [1]: http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html
 [2]: https://www.postgresql.org/download/windows/
+[3]: https://tomcat.apache.org/download-80.cgi#8.0.44
+[4]: http://mirrors.fe.up.pt/pub/apache//maven/maven-3/3.3.9/
