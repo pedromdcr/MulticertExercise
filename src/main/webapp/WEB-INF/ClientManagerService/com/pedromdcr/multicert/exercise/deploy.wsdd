@@ -10,9 +10,20 @@
       <parameter name="className" value="com.pedromdcr.multicert.exercise.ClientManager"/>
       <parameter name="wsdlPortType" value="ClientManager"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <operation xmlns:operNS="http://exercise.multicert.pedromdcr.com" name="init" qname="operNS:init" soapAction="">
+      <operation xmlns:operNS="http://exercise.multicert.pedromdcr.com" name="main" qname="operNS:main" soapAction="">
+        <parameter xmlns:pns="http://exercise.multicert.pedromdcr.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:args" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://exercise.multicert.pedromdcr.com" xmlns:retNS="http://exercise.multicert.pedromdcr.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="init" qname="operNS:init" returnQName="retNS:initReturn" returnType="rtns:string" soapAction="">
       </operation>
       <operation xmlns:operNS="http://exercise.multicert.pedromdcr.com" xmlns:retNS="http://exercise.multicert.pedromdcr.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="removeClient" qname="operNS:removeClient" returnQName="retNS:removeClientReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://exercise.multicert.pedromdcr.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+        <parameter xmlns:pns="http://exercise.multicert.pedromdcr.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nif" type="tns:string"/>
+        <parameter xmlns:pns="http://exercise.multicert.pedromdcr.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:address" type="tns:string"/>
+        <parameter xmlns:pns="http://exercise.multicert.pedromdcr.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:phoneNumber" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://exercise.multicert.pedromdcr.com" xmlns:retNS="http://exercise.multicert.pedromdcr.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="listAllClients" qname="operNS:listAllClients" returnQName="retNS:listAllClientsReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://exercise.multicert.pedromdcr.com" xmlns:retNS="http://exercise.multicert.pedromdcr.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addClient" qname="operNS:addClient" returnQName="retNS:addClientReturn" returnType="rtns:string" soapAction="">
         <parameter xmlns:pns="http://exercise.multicert.pedromdcr.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
         <parameter xmlns:pns="http://exercise.multicert.pedromdcr.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nif" type="tns:string"/>
         <parameter xmlns:pns="http://exercise.multicert.pedromdcr.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:address" type="tns:string"/>
@@ -21,18 +32,10 @@
       <operation xmlns:operNS="http://exercise.multicert.pedromdcr.com" xmlns:retNS="http://exercise.multicert.pedromdcr.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getClientByNif" qname="operNS:getClientByNif" returnQName="retNS:getClientByNifReturn" returnType="rtns:string" soapAction="">
         <parameter xmlns:pns="http://exercise.multicert.pedromdcr.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nif" type="tns:string"/>
       </operation>
-      <operation xmlns:operNS="http://exercise.multicert.pedromdcr.com" xmlns:retNS="http://exercise.multicert.pedromdcr.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="listAllClients" qname="operNS:listAllClients" returnQName="retNS:listAllClientsReturn" returnType="rtns:string" soapAction="">
-      </operation>
       <operation xmlns:operNS="http://exercise.multicert.pedromdcr.com" xmlns:retNS="http://exercise.multicert.pedromdcr.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getClientByName" qname="operNS:getClientByName" returnQName="retNS:getClientByNameReturn" returnType="rtns:string" soapAction="">
         <parameter xmlns:pns="http://exercise.multicert.pedromdcr.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
       </operation>
-      <operation xmlns:operNS="http://exercise.multicert.pedromdcr.com" xmlns:retNS="http://exercise.multicert.pedromdcr.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addClient" qname="operNS:addClient" returnQName="retNS:addClientReturn" returnType="rtns:string" soapAction="">
-        <parameter xmlns:pns="http://exercise.multicert.pedromdcr.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
-        <parameter xmlns:pns="http://exercise.multicert.pedromdcr.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nif" type="tns:string"/>
-        <parameter xmlns:pns="http://exercise.multicert.pedromdcr.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:address" type="tns:string"/>
-        <parameter xmlns:pns="http://exercise.multicert.pedromdcr.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:phoneNumber" type="tns:string"/>
-      </operation>
-      <parameter name="allowedMethods" value="removeClient init listAllClients getClientByName getClientByNif addClient"/>
+      <parameter name="allowedMethods" value="removeClient init listAllClients getClientByName addClient getClientByNif main"/>
 
   </service>
 </deployment>

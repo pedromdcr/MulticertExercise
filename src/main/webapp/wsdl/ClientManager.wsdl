@@ -4,11 +4,25 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://exercise.multicert.pedromdcr.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="main">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="args" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="mainResponse">
+    <complexType/>
+   </element>
    <element name="init">
     <complexType/>
    </element>
    <element name="initResponse">
-    <complexType/>
+    <complexType>
+     <sequence>
+      <element name="initReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
    </element>
    <element name="removeClient">
     <complexType>
@@ -27,20 +41,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="getClientByNif">
-    <complexType>
-     <sequence>
-      <element name="nif" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getClientByNifResponse">
-    <complexType>
-     <sequence>
-      <element name="getClientByNifReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
    <element name="listAllClients">
     <complexType/>
    </element>
@@ -48,20 +48,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="listAllClientsReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getClientByName">
-    <complexType>
-     <sequence>
-      <element name="name" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getClientByNameResponse">
-    <complexType>
-     <sequence>
-      <element name="getClientByNameReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -82,6 +68,34 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="getClientByNif">
+    <complexType>
+     <sequence>
+      <element name="nif" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getClientByNifResponse">
+    <complexType>
+     <sequence>
+      <element name="getClientByNifReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getClientByName">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getClientByNameResponse">
+    <complexType>
+     <sequence>
+      <element name="getClientByNameReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
   </schema>
  </wsdl:types>
 
@@ -93,9 +107,49 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="getClientByNameRequest">
+
+      <wsdl:part element="impl:getClientByName" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="initRequest">
+
+      <wsdl:part element="impl:init" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="initResponse">
+
+      <wsdl:part element="impl:initResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:message name="addClientRequest">
 
       <wsdl:part element="impl:addClient" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="mainResponse">
+
+      <wsdl:part element="impl:mainResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="mainRequest">
+
+      <wsdl:part element="impl:main" name="parameters">
 
       </wsdl:part>
 
@@ -125,33 +179,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="getClientByNameRequest">
-
-      <wsdl:part element="impl:getClientByName" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="initRequest">
-
-      <wsdl:part element="impl:init" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="removeClientResponse">
 
       <wsdl:part element="impl:removeClientResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="initResponse">
-
-      <wsdl:part element="impl:initResponse" name="parameters">
 
       </wsdl:part>
 
@@ -183,6 +213,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    <wsdl:portType name="ClientManager">
 
+      <wsdl:operation name="main">
+
+         <wsdl:input message="impl:mainRequest" name="mainRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:mainResponse" name="mainResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="init">
 
          <wsdl:input message="impl:initRequest" name="initRequest">
@@ -207,18 +249,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="getClientByNif">
-
-         <wsdl:input message="impl:getClientByNifRequest" name="getClientByNifRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:getClientByNifResponse" name="getClientByNifResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="listAllClients">
 
          <wsdl:input message="impl:listAllClientsRequest" name="listAllClientsRequest">
@@ -226,18 +256,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:listAllClientsResponse" name="listAllClientsResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="getClientByName">
-
-         <wsdl:input message="impl:getClientByNameRequest" name="getClientByNameRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:getClientByNameResponse" name="getClientByNameResponse">
 
        </wsdl:output>
 
@@ -255,11 +273,53 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="getClientByNif">
+
+         <wsdl:input message="impl:getClientByNifRequest" name="getClientByNifRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getClientByNifResponse" name="getClientByNifResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getClientByName">
+
+         <wsdl:input message="impl:getClientByNameRequest" name="getClientByNameRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getClientByNameResponse" name="getClientByNameResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
    </wsdl:portType>
 
    <wsdl:binding name="ClientManagerSoapBinding" type="impl:ClientManager">
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="main">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="mainRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="mainResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
 
       <wsdl:operation name="init">
 
@@ -297,24 +357,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="getClientByNif">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="getClientByNifRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="getClientByNifResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="listAllClients">
 
          <wsdlsoap:operation soapAction=""/>
@@ -333,24 +375,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="getClientByName">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="getClientByNameRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="getClientByNameResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="addClient">
 
          <wsdlsoap:operation soapAction=""/>
@@ -362,6 +386,42 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="addClientResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getClientByNif">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getClientByNifRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getClientByNifResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getClientByName">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getClientByNameRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getClientByNameResponse">
 
             <wsdlsoap:body use="literal"/>
 

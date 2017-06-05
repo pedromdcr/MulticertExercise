@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -20,40 +20,39 @@
   </ns1:requestFlow>
  </ns1:globalConfiguration>
  <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
- <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
  <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
  <ns1:service name="AdminService" provider="java:MSG">
   <ns1:parameter name="allowedMethods" value="AdminService"/>
   <ns1:parameter name="enableRemoteAdmin" value="false"/>
   <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
   <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
  </ns1:service>
- <ns1:service name="Version" provider="java:RPC">
-  <ns1:parameter name="allowedMethods" value="getVersion"/>
-  <ns1:parameter name="className" value="org.apache.axis.Version"/>
- </ns1:service>
  <ns1:service name="ClientManager" provider="java:RPC" style="wrapped" use="literal">
-  <ns2:operation name="init" qname="ns1:init" soapAction="" xmlns:ns1="http://exercise.multicert.pedromdcr.com" xmlns:ns2="http://xml.apache.org/axis/wsdd/"/>
-  <ns1:operation name="removeClient" qname="ns2:removeClient" returnQName="ns2:removeClientReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns2:name" type="xsd:string"/>
-   <ns1:parameter qname="ns2:nif" type="xsd:string"/>
-   <ns1:parameter qname="ns2:address" type="xsd:string"/>
-   <ns1:parameter qname="ns2:phoneNumber" type="xsd:string"/>
-  </ns1:operation>
-  <ns1:operation name="getClientByNif" qname="ns3:getClientByNif" returnQName="ns3:getClientByNifReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns2:operation name="main" qname="ns1:main" soapAction="" xmlns:ns1="http://exercise.multicert.pedromdcr.com" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:args" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns2:operation>
+  <ns1:operation name="init" qname="ns2:init" returnQName="ns2:initReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="removeClient" qname="ns3:removeClient" returnQName="ns3:removeClientReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:name" type="xsd:string"/>
    <ns1:parameter qname="ns3:nif" type="xsd:string"/>
+   <ns1:parameter qname="ns3:address" type="xsd:string"/>
+   <ns1:parameter qname="ns3:phoneNumber" type="xsd:string"/>
   </ns1:operation>
   <ns1:operation name="listAllClients" qname="ns4:listAllClients" returnQName="ns4:listAllClientsReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-  <ns1:operation name="getClientByName" qname="ns5:getClientByName" returnQName="ns5:getClientByNameReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="addClient" qname="ns5:addClient" returnQName="ns5:addClientReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns5:name" type="xsd:string"/>
+   <ns1:parameter qname="ns5:nif" type="xsd:string"/>
+   <ns1:parameter qname="ns5:address" type="xsd:string"/>
+   <ns1:parameter qname="ns5:phoneNumber" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="addClient" qname="ns6:addClient" returnQName="ns6:addClientReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns6:name" type="xsd:string"/>
+  <ns1:operation name="getClientByNif" qname="ns6:getClientByNif" returnQName="ns6:getClientByNifReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns6:nif" type="xsd:string"/>
-   <ns1:parameter qname="ns6:address" type="xsd:string"/>
-   <ns1:parameter qname="ns6:phoneNumber" type="xsd:string"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="removeClient init listAllClients getClientByName getClientByNif addClient"/>
+  <ns1:operation name="getClientByName" qname="ns7:getClientByName" returnQName="ns7:getClientByNameReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://exercise.multicert.pedromdcr.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:name" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="removeClient init listAllClients getClientByName addClient getClientByNif main"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="ClientManager"/>
   <ns1:parameter name="className" value="com.pedromdcr.multicert.exercise.ClientManager"/>
@@ -61,6 +60,10 @@
   <ns1:parameter name="schemaQualified" value="http://exercise.multicert.pedromdcr.com"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://exercise.multicert.pedromdcr.com"/>
   <ns1:parameter name="wsdlServiceElement" value="ClientManagerService"/>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
  </ns1:service>
  <ns1:transport name="http">
   <ns1:requestFlow>

@@ -20,6 +20,10 @@ public class ClientManager {
 	public static final String CLIENT_ADDRESS = "address";
 	public static final String CLIENT_PHONENUMBER = "phonenumber";
 	
+	public static void main(String args[]) {
+		
+	}
+	
 	public String init() {
 		
 		try
